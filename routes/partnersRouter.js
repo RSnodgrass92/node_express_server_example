@@ -1,7 +1,7 @@
 const express = require("express")
-const campsiteRouter = express.Router()
+const partnersRouter = express.Router()
 
-campsiteRouter.route("/")
+partnersRouter.route("/")
 
 //* ENDPOINTS
 //.all is a catch all for all http verbs use this to set default props for all routing methods
@@ -15,24 +15,24 @@ campsiteRouter.route("/")
 })
 
 .get((req,res)=>{
-    res.end("Will send all the campsites to you")
+    res.end("Will send all the partners to you")
 })
 
 .post((req,res)=>
 {
-    res.end(`Will add the campsite: ${req.body.name} with description: ${req.body.description}`)
+    res.end(`Will add the partners: ${req.body.name} with description: ${req.body.description}`)
 })
 
 .put((req,res)=>{
     res.statusCode = 403; 
-    res.end("PUT operation not supported on /campsites")
+    res.end("PUT operation not supported on /partners")
 })
 
 .delete((req,res)=>{
-    res.end("Deleting all campsites")
+    res.end("Deleting all partners")
 })
 
-campsiteRouter.route(`/:campsiteId`)
+partnersRouter.route(`/:partnersId`)
 
 .all((req,res,next)=> 
 {
@@ -41,22 +41,22 @@ campsiteRouter.route(`/:campsiteId`)
     next()
 })
 .get((req,res)=>{
-    res.end(`Will send details of the campsite: ${req.params.campsiteId}`)
+    res.end(`Will send details of the partners: ${req.params.partnersId}`)
 })
 
 .post((req,res)=>
 {
-    res.end(`POST operation not supported on /campsites/${req.params.campsiteId}`)
+    res.end(`POST operation not supported on /partners/${req.params.partnersId}`)
 })
 
 .put((req,res)=>{
-    res.write(`Updating the campsite: ${req.params.campsiteId}\n`)
-    res.end(`Will update the campsite: ${req.body.name} 
+    res.write(`Updating the partners: ${req.params.partnersId}\n`)
+    res.end(`Will update the partners: ${req.body.name} 
             with description: ${req.body.description}`)
 })
 
 .delete((req,res)=>{
-    res.end(`Deleting campsite: ${req.params.campsiteId}`)
+    res.end(`Deleting partners: ${req.params.partnersId}`)
 })
 
-module.exports = campsiteRouter
+module.exports = partnersRouter

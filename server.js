@@ -3,6 +3,8 @@
 const express= require("express")
 const morgan= require("morgan")
 const campsiteRouter = require("./routes/campsiteRouter")
+const promotionRouter= require("./routes/promotionRouter")
+const partnerRouter= require("./routes/partnersRouter")
 
 const hostname="localhost"
 const port = 3000
@@ -18,6 +20,8 @@ app.use(morgan("dev"))
 app.use(express.json())
 
 app.use("/campsites", campsiteRouter)
+app.use("/promotions", promotionRouter)
+app.use("/partners", partnerRouter)
 
 //express.static will serve files from the public folder __dirname is a special variable in node
 // it will refer to the absolute path in the current directory of the file that it is in.
